@@ -231,37 +231,69 @@ class TeerController extends Controller
 
     /**
      * Get latest result for a specific game
+     * Smart caching: If both FR and SR are available, cache until midnight
+     * If results are incomplete, cache for 2 minutes to check again
      */
     protected function getLatestResult($game)
     {
         $cacheKey = "latest_result_{$game}";
+        $today = now()->toDateString();
+        $todayCacheKey = "latest_result_{$game}_{$today}";
 
-        return Cache::remember($cacheKey, 60, function () use ($game) {
-            try {
-                $response = Http::timeout(10)->get("{$this->apiBaseUrl}/results/{$game}/latest");
+        // Check if we have complete results for today (both FR and SR)
+        $cachedComplete = Cache::get($todayCacheKey);
+        if ($cachedComplete) {
+            return $cachedComplete;
+        }
 
-                if ($response->successful()) {
-                    $data = $response->json();
-                    if (isset($data['success']) && $data['success'] && isset($data['data'])) {
-                        return $data['data'];
+        // Try to get fresh data
+        try {
+            $response = Http::timeout(10)->get("{$this->apiBaseUrl}/results/{$game}/latest");
+
+            if ($response->successful()) {
+                $data = $response->json();
+                if (isset($data['success']) && $data['success'] && isset($data['data'])) {
+                    $result = $data['data'];
+
+                    // Check if both FR and SR are available
+                    $hasBothResults = isset($result['fr']) && $result['fr'] !== null
+                                   && isset($result['sr']) && $result['sr'] !== null;
+
+                    // Check if this result is for today
+                    $resultDate = isset($result['date']) ? substr($result['date'], 0, 10) : null;
+                    $isToday = $resultDate === $today;
+
+                    if ($hasBothResults && $isToday) {
+                        // Both results available for today - cache until midnight
+                        $secondsUntilMidnight = now()->endOfDay()->diffInSeconds(now());
+                        Cache::put($todayCacheKey, $result, $secondsUntilMidnight);
+                        Cache::forget($cacheKey); // Clear the short-term cache
+                        return $result;
+                    } else {
+                        // Results incomplete or from previous day - cache for 2 minutes
+                        Cache::put($cacheKey, $result, 120);
+                        return $result;
                     }
                 }
-            } catch (\Exception $e) {
-                \Log::error("Failed to fetch latest result for {$game}: " . $e->getMessage());
             }
+        } catch (\Exception $e) {
+            \Log::error("Failed to fetch latest result for {$game}: " . $e->getMessage());
+        }
 
-            return null;
-        });
+        // Return cached data if API fails
+        return Cache::get($cacheKey);
     }
 
     /**
      * Get result history for a game
+     * Cache for 24 hours since past results don't change
      */
     protected function getResultHistory($game, $days = 30)
     {
         $cacheKey = "result_history_{$game}_{$days}";
 
-        return Cache::remember($cacheKey, 300, function () use ($game, $days) {
+        // Cache for 24 hours (86400 seconds) - past results don't change
+        return Cache::remember($cacheKey, 86400, function () use ($game, $days) {
             try {
                 $response = Http::timeout(15)->get("{$this->apiBaseUrl}/results/{$game}/history", [
                     'days' => $days,
