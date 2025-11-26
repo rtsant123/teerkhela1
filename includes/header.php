@@ -20,6 +20,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/public/css/style.css">
+
+    <?php if (isset($extraHead)): ?>
+    <?php echo $extraHead; ?>
+    <?php endif; ?>
 </head>
 <body>
     <!-- Header -->
