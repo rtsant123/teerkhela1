@@ -64,13 +64,13 @@ include __DIR__ . '/includes/header.php';
                             <div class="result-item">
                                 <span class="result-label">First Round (FR)</span>
                                 <span class="result-number" style="background: <?php echo $game['color']; ?>">
-                                    <?php echo isset($result['fr']) ? e($result['fr']) : '--'; ?>
+                                    <?php echo formatResult($result['fr'] ?? null); ?>
                                 </span>
                             </div>
                             <div class="result-item">
                                 <span class="result-label">Second Round (SR)</span>
                                 <span class="result-number" style="background: <?php echo $game['color']; ?>">
-                                    <?php echo isset($result['sr']) ? e($result['sr']) : '--'; ?>
+                                    <?php echo formatResult($result['sr'] ?? null); ?>
                                 </span>
                             </div>
                         </div>
@@ -94,8 +94,8 @@ include __DIR__ . '/includes/header.php';
                 </div>
 
                 <div class="card-footer">
-                    <a href="/game.php?game=<?php echo $slug; ?>" class="btn btn-outline">
-                        View History <i class="fas fa-arrow-right"></i>
+                    <a href="/<?php echo $slug; ?>" class="btn btn-outline">
+                        View Full Details <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
