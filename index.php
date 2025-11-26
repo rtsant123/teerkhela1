@@ -39,64 +39,122 @@ include __DIR__ . '/includes/header.php';
 <section class="results-section" id="results">
     <div class="container">
         <div class="section-header">
-            <h2>Today's Results</h2>
-            <p>Latest Teer results updated in real-time</p>
+            <h2>Today's Live Teer Results</h2>
+            <p>Updated in real-time • <?php echo date('d F Y'); ?></p>
         </div>
 
-        <div class="results-grid">
+        <!-- Results Table -->
+        <div class="results-table-wrapper">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Teer Game</th>
+                        <th>Timing</th>
+                        <th>FR (First Round)</th>
+                        <th>SR (Second Round)</th>
+                        <th>Date</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($GAMES as $slug => $game):
+                        $result = $results[$slug] ?? null;
+                    ?>
+                    <tr class="result-row">
+                        <td class="game-name-col">
+                            <div class="game-name-wrapper">
+                                <div class="game-icon-small" style="background: <?php echo $game['color']; ?>">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <div class="game-name-info">
+                                    <strong><?php echo e($game['name']); ?></strong>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="timing-col">
+                            <span class="timing-badge">
+                                <i class="far fa-clock"></i>
+                                <?php echo e($game['timing']); ?>
+                            </span>
+                        </td>
+                        <td class="result-col">
+                            <span class="result-badge fr-badge" style="background: <?php echo $game['color']; ?>">
+                                <?php echo $result ? formatResult($result['fr'] ?? null) : '--'; ?>
+                            </span>
+                        </td>
+                        <td class="result-col">
+                            <span class="result-badge sr-badge" style="background: <?php echo $game['color']; ?>">
+                                <?php echo $result ? formatResult($result['sr'] ?? null) : '--'; ?>
+                            </span>
+                        </td>
+                        <td class="date-col">
+                            <?php if ($result): ?>
+                                <i class="far fa-calendar-alt"></i>
+                                <?php echo isset($result['date']) ? formatDate($result['date']) : 'Today'; ?>
+                            <?php else: ?>
+                                <span class="waiting-text">
+                                    <i class="fas fa-spinner fa-spin"></i> Pending
+                                </span>
+                            <?php endif; ?>
+                        </td>
+                        <td class="action-col">
+                            <a href="/<?php echo $slug; ?>" class="view-details-btn">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile Card View (Hidden on Desktop) -->
+        <div class="mobile-results">
             <?php foreach ($GAMES as $slug => $game):
                 $result = $results[$slug] ?? null;
             ?>
-            <div class="result-card" style="--card-color: <?php echo $game['color']; ?>">
-                <div class="card-header">
-                    <div class="game-icon" style="background: <?php echo $game['color']; ?>">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <div class="game-info">
-                        <h3><?php echo e($game['name']); ?></h3>
-                        <span class="game-timing"><i class="far fa-clock"></i> <?php echo e($game['timing']); ?></span>
+            <div class="mobile-result-card">
+                <div class="mobile-card-header" style="border-left: 4px solid <?php echo $game['color']; ?>">
+                    <div class="mobile-game-info">
+                        <div class="game-icon-small" style="background: <?php echo $game['color']; ?>">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h3><?php echo e($game['name']); ?></h3>
+                            <span class="mobile-timing">
+                                <i class="far fa-clock"></i> <?php echo e($game['timing']); ?>
+                            </span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="card-body">
-                    <?php if ($result): ?>
-                        <div class="result-display">
-                            <div class="result-item">
-                                <span class="result-label">First Round (FR)</span>
-                                <span class="result-number" style="background: <?php echo $game['color']; ?>">
-                                    <?php echo formatResult($result['fr'] ?? null); ?>
-                                </span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Second Round (SR)</span>
-                                <span class="result-number" style="background: <?php echo $game['color']; ?>">
-                                    <?php echo formatResult($result['sr'] ?? null); ?>
-                                </span>
-                            </div>
+                <div class="mobile-card-body">
+                    <div class="mobile-results-row">
+                        <div class="mobile-result-item">
+                            <span class="mobile-label">FR</span>
+                            <span class="mobile-result-badge" style="background: <?php echo $game['color']; ?>">
+                                <?php echo $result ? formatResult($result['fr'] ?? null) : '--'; ?>
+                            </span>
                         </div>
-                        <p class="result-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <?php echo isset($result['date']) ? formatDate($result['date']) : 'Today'; ?>
-                        </p>
-                    <?php else: ?>
-                        <div class="result-display">
-                            <div class="result-item">
-                                <span class="result-label">First Round (FR)</span>
-                                <span class="result-number waiting">--</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Second Round (SR)</span>
-                                <span class="result-number waiting">--</span>
-                            </div>
+                        <div class="mobile-result-item">
+                            <span class="mobile-label">SR</span>
+                            <span class="mobile-result-badge" style="background: <?php echo $game['color']; ?>">
+                                <?php echo $result ? formatResult($result['sr'] ?? null) : '--'; ?>
+                            </span>
                         </div>
-                        <p class="result-waiting"><i class="fas fa-spinner fa-spin"></i> Waiting for results...</p>
-                    <?php endif; ?>
-                </div>
-
-                <div class="card-footer">
-                    <a href="/<?php echo $slug; ?>" class="btn btn-outline">
-                        View Full Details <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </div>
+                    <div class="mobile-card-footer">
+                        <span class="mobile-date">
+                            <?php if ($result): ?>
+                                <i class="far fa-calendar-alt"></i>
+                                <?php echo isset($result['date']) ? formatDate($result['date']) : 'Today'; ?>
+                            <?php else: ?>
+                                <i class="fas fa-spinner fa-spin"></i> Waiting...
+                            <?php endif; ?>
+                        </span>
+                        <a href="/<?php echo $slug; ?>" class="mobile-view-btn" style="background: <?php echo $game['color']; ?>">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
