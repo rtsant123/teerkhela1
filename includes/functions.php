@@ -140,6 +140,16 @@ function e($string) {
 }
 
 /**
+ * Format result number with zero padding
+ */
+function formatResult($number) {
+    if ($number === null || $number === '') {
+        return '--';
+    }
+    return str_pad($number, 2, '0', STR_PAD_LEFT);
+}
+
+/**
  * Get current page
  */
 function getCurrentPage() {

@@ -29,11 +29,11 @@
                 <div class="footer-section">
                     <h4>Teer Games</h4>
                     <ul>
-                        <li><a href="/game.php?game=shillong-teer">Shillong Teer</a></li>
-                        <li><a href="/game.php?game=khanapara-teer">Khanapara Teer</a></li>
-                        <li><a href="/game.php?game=juwai-teer">Juwai Teer</a></li>
-                        <li><a href="/game.php?game=shillong-night">Shillong Night</a></li>
-                        <li><a href="/game.php?game=bhutan-teer">Bhutan Teer</a></li>
+                        <li><a href="/shillong-teer">Shillong Teer</a></li>
+                        <li><a href="/khanapara-teer">Khanapara Teer</a></li>
+                        <li><a href="/juwai-teer">Juwai Teer</a></li>
+                        <li><a href="/shillong-night">Shillong Night</a></li>
+                        <li><a href="/bhutan-teer">Bhutan Teer</a></li>
                     </ul>
                 </div>
 
