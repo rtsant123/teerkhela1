@@ -1,11 +1,81 @@
+# Teer Khela Results - Hostinger Configuration
+# Simple PHP version without Laravel
+
+# Enable Rewrite Engine
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
 
-    # Handle Front Controller
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # Force HTTPS (optional - uncomment if you have SSL)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+    # Serve static files from public directory
+    RewriteCond %{REQUEST_URI} ^/public/
+    RewriteRule ^public/(.*)$ public/$1 [L]
+
+    # Redirect /public to root if accidentally accessed
+    RewriteCond %{THE_REQUEST} ^GET\ /public/
+    RewriteRule ^public/(.*)$ /$1 [R=301,L]
+
+    # Don't rewrite if file or directory exists
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Remove .php extension from URLs
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.+)$ $1.php [L]
+
+    # Home page
+    RewriteRule ^$ index.php [L]
 </IfModule>
 
 # Prevent directory listing
 Options -Indexes
+
+# Set default index files
+DirectoryIndex index.php index.html
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Disable server signature
+ServerSignature Off
+
+# PHP Settings (if allowed by host)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value memory_limit 256M
+</IfModule>
+
+# Cache control for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+</IfModule>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "(^\.htaccess|^\.env|composer\.json|composer\.lock|config\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Error pages (optional - create these files if needed)
+ErrorDocument 404 /404.php
