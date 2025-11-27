@@ -222,23 +222,23 @@ include __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Premium Section -->
+<!-- App Features Section -->
 <section class="premium-cta-section">
     <div class="container">
         <div class="premium-cta-content">
             <div class="premium-cta-text">
-                <h2><i class="fas fa-crown"></i> Go Premium</h2>
-                <p>Unlock exclusive features including early predictions, advanced analytics, win alerts, and more!</p>
+                <h2><i class="fas fa-mobile-alt"></i> Get Our Mobile App</h2>
+                <p>Experience the best way to check Teer results with instant notifications, smart predictions, and advanced analytics!</p>
                 <ul class="premium-benefits">
-                    <li><i class="fas fa-check"></i> Early predictions before results</li>
-                    <li><i class="fas fa-check"></i> Advanced number analytics</li>
-                    <li><i class="fas fa-check"></i> SMS & Email notifications</li>
-                    <li><i class="fas fa-check"></i> Ad-free experience</li>
+                    <li><i class="fas fa-check"></i> Instant push notifications</li>
+                    <li><i class="fas fa-check"></i> AI-powered predictions</li>
+                    <li><i class="fas fa-check"></i> Complete result history</li>
+                    <li><i class="fas fa-check"></i> Dark mode & fast performance</li>
                 </ul>
             </div>
             <div class="premium-cta-action">
                 <a href="/premium.php" class="btn btn-premium btn-large">
-                    <i class="fas fa-crown"></i> Explore Premium
+                    <i class="fas fa-mobile-alt"></i> Explore App Features
                 </a>
             </div>
         </div>

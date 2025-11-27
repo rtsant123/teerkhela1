@@ -37,7 +37,7 @@
 
                 <nav class="nav-menu" id="navMenu">
                     <a href="/" class="<?php echo isActive('home'); ?>">Home</a>
-                    <a href="/premium.php" class="<?php echo isActive('premium'); ?>">Premium</a>
+                    <a href="/premium.php" class="<?php echo isActive('premium'); ?>">App Features</a>
                     <a href="/support.php" class="<?php echo isActive('support'); ?>">Support</a>
                     <a href="/download.php" class="nav-cta">
                         <i class="fas fa-download"></i> Download App

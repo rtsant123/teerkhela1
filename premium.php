@@ -1,181 +1,169 @@
 <?php
 /**
- * Premium Page - Teer Khela Results
+ * App Features Page - Teer Khela Results
  */
 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/includes/functions.php';
 
 // Page configuration
-$pageTitle = 'Premium Features - Teer Khela Results';
+$pageTitle = 'Download App - Teer Khela Results Mobile App';
 
 // Include header
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Premium Hero -->
+<!-- App Hero -->
 <section class="premium-hero">
     <div class="container">
         <div class="premium-hero-content">
-            <h1><i class="fas fa-crown"></i> Go Premium</h1>
-            <p class="hero-tagline">Unlock Exclusive Features & Advanced Analytics</p>
-            <p class="hero-description">Get early predictions, advanced analytics, instant notifications, and an ad-free experience!</p>
+            <h1><i class="fas fa-mobile-alt"></i> Download Teer Khela App</h1>
+            <p class="hero-tagline">Fast • Reliable • Real-time Results</p>
+            <p class="hero-description">Experience the best way to check Teer results with our powerful mobile app. Get instant notifications, predictions, and complete result history right in your pocket!</p>
+            <div class="hero-buttons" style="margin-top: 30px; justify-content: center;">
+                <a href="/download.php" class="btn btn-primary btn-large">
+                    <i class="fab fa-android"></i> Download for Android
+                </a>
+                <a href="/download.php" class="btn btn-secondary btn-large">
+                    <i class="fab fa-apple"></i> Coming Soon on iOS
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Pricing Plans -->
+<!-- App Features Showcase -->
 <section class="pricing-section">
     <div class="container">
         <div class="section-header">
-            <h2>Choose Your Plan</h2>
-            <p>Select the perfect plan for your needs</p>
+            <h2>Why Download Our App?</h2>
+            <p>Everything you need in one powerful mobile application</p>
         </div>
 
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <h3>Monthly</h3>
-                    <div class="pricing-price">
-                        <span class="currency">₹</span>
-                        <span class="amount">199</span>
-                        <span class="period">/month</span>
-                    </div>
-                </div>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Early predictions</li>
-                    <li><i class="fas fa-check"></i> Advanced analytics</li>
-                    <li><i class="fas fa-check"></i> Push notifications</li>
-                    <li><i class="fas fa-check"></i> Ad-free experience</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
-                </ul>
-                <a href="#" class="btn btn-primary btn-large">Get Started</a>
-            </div>
-
-            <div class="pricing-card featured">
-                <div class="pricing-badge">Most Popular</div>
-                <div class="pricing-header">
-                    <h3>Quarterly</h3>
-                    <div class="pricing-price">
-                        <span class="currency">₹</span>
-                        <span class="amount">499</span>
-                        <span class="period">/3 months</span>
-                    </div>
-                    <div class="pricing-save">Save 17%</div>
-                </div>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Early predictions</li>
-                    <li><i class="fas fa-check"></i> Advanced analytics</li>
-                    <li><i class="fas fa-check"></i> Push notifications</li>
-                    <li><i class="fas fa-check"></i> Ad-free experience</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
-                    <li><i class="fas fa-check"></i> SMS alerts</li>
-                </ul>
-                <a href="#" class="btn btn-premium btn-large">Get Started</a>
-            </div>
-
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <h3>Yearly</h3>
-                    <div class="pricing-price">
-                        <span class="currency">₹</span>
-                        <span class="amount">1,499</span>
-                        <span class="period">/year</span>
-                    </div>
-                    <div class="pricing-save">Save 37%</div>
-                </div>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Early predictions</li>
-                    <li><i class="fas fa-check"></i> Advanced analytics</li>
-                    <li><i class="fas fa-check"></i> Push notifications</li>
-                    <li><i class="fas fa-check"></i> Ad-free experience</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
-                    <li><i class="fas fa-check"></i> SMS & Email alerts</li>
-                    <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                </ul>
-                <a href="#" class="btn btn-primary btn-large">Get Started</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Premium Features -->
-<section class="premium-features-section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Premium Features</h2>
-            <p>Everything you need to stay ahead</p>
-        </div>
-
-        <div class="features-grid">
+        <div class="features-grid" style="margin-top: 50px;">
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-crystal-ball"></i>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <h3>Early Predictions</h3>
-                <p>Get predictions before results are declared based on advanced algorithms and historical patterns.</p>
+                <h3>Instant Push Notifications</h3>
+                <p>Get results the moment they're declared. Never miss an update with real-time push notifications delivered straight to your phone.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <h3>Advanced Analytics</h3>
-                <p>Access detailed charts, trends, and patterns to make informed decisions.</p>
+                <p>Analyze trends, view detailed statistics, and access comprehensive charts for all Teer games with our powerful analytics tools.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bell"></i>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <i class="fas fa-crystal-ball"></i>
                 </div>
-                <h3>Instant Notifications</h3>
-                <p>Get push notifications the moment results are declared. Never miss an update.</p>
+                <h3>Smart Predictions</h3>
+                <p>Access AI-powered predictions based on historical data and advanced algorithms to help you make informed decisions.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>Complete History</h3>
+                <p>Browse unlimited result history with powerful search and filter options. Access years of data at your fingertips.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <h3>Dark Mode</h3>
+                <p>Comfortable viewing experience day or night with our beautiful dark mode interface that's easy on the eyes.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized for speed and performance. Load results instantly even on slow internet connections with our efficient app.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <h3>Save Favorites</h3>
+                <p>Bookmark your favorite Teer games and access them quickly. Customize your experience with personalized preferences.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h3>Easy Sharing</h3>
+                <p>Share results instantly with friends via WhatsApp, Facebook, or any messaging app with just one tap.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
                     <i class="fas fa-ad"></i>
                 </div>
-                <h3>Ad-Free Experience</h3>
-                <p>Enjoy a clean, distraction-free interface without any advertisements.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-sms"></i>
-                </div>
-                <h3>SMS Alerts</h3>
-                <p>Receive results directly to your phone via SMS. Available in quarterly and yearly plans.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h3>Priority Support</h3>
-                <p>Get priority access to our support team with faster response times.</p>
+                <h3>Minimal Ads</h3>
+                <p>Enjoy a clean, distraction-free interface with minimal, non-intrusive ads that don't interfere with your experience.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Payment Methods -->
-<section class="payment-methods-section">
+<!-- App Screenshots Section -->
+<section class="premium-features-section">
     <div class="container">
         <div class="section-header">
-            <h2>Secure Payment Methods</h2>
-            <p>We accept all major payment methods</p>
+            <h2>Simple, Beautiful, Powerful</h2>
+            <p>Designed for the best user experience</p>
         </div>
 
-        <div class="payment-methods">
-            <div class="payment-icon"><i class="fab fa-cc-visa"></i></div>
-            <div class="payment-icon"><i class="fab fa-cc-mastercard"></i></div>
-            <div class="payment-icon"><i class="fab fa-cc-amex"></i></div>
-            <div class="payment-icon"><i class="fas fa-university"></i></div>
-            <div class="payment-text">UPI</div>
-            <div class="payment-text">Paytm</div>
-            <div class="payment-text">PhonePe</div>
-            <div class="payment-text">GPay</div>
+        <div class="features-grid" style="max-width: 900px; margin: 0 auto;">
+            <div class="feature-card" style="text-align: center; padding: 40px;">
+                <i class="fas fa-mobile-alt" style="font-size: 80px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <h3>Beautiful Interface</h3>
+                <p>Clean, modern design that makes checking results a pleasure. Intuitive navigation gets you where you need to go instantly.</p>
+            </div>
+
+            <div class="feature-card" style="text-align: center; padding: 40px;">
+                <i class="fas fa-download" style="font-size: 80px; color: var(--accent-color); margin-bottom: 20px;"></i>
+                <h3>Small Download Size</h3>
+                <p>Under 10MB download size means you can install it quickly even on slow connections. Lightweight and efficient.</p>
+            </div>
+
+            <div class="feature-card" style="text-align: center; padding: 40px;">
+                <i class="fas fa-shield-alt" style="font-size: 80px; color: var(--success-color); margin-bottom: 20px;"></i>
+                <h3>Safe & Secure</h3>
+                <p>Your data is always safe with us. No unnecessary permissions, no data collection, just pure functionality.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download CTA -->
+<section class="premium-final-cta">
+    <div class="container">
+        <div class="final-cta-content">
+            <h2><i class="fas fa-mobile-alt"></i> Download Now & Never Miss a Result!</h2>
+            <p>Join thousands of users who trust our app for accurate, real-time Teer results</p>
+            <div class="hero-buttons" style="margin-top: 30px; justify-content: center;">
+                <a href="/download.php" class="btn btn-large" style="background: var(--white); color: var(--primary-color); font-weight: 700;">
+                    <i class="fab fa-android"></i> Get Android App
+                </a>
+            </div>
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
+                <i class="fas fa-check-circle"></i> Free Download
+                <span style="margin: 0 10px;">•</span>
+                <i class="fas fa-check-circle"></i> No Registration Required
+                <span style="margin: 0 10px;">•</span>
+                <i class="fas fa-check-circle"></i> Instant Access
+            </p>
         </div>
     </div>
 </section>
